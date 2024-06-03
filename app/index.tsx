@@ -5,7 +5,7 @@ const Home = () => {
   return (
     <View style={styles.container}>
       <Text style={styles.bigText}>
-        Your New Stateless Functional Component
+        Your New Stateless Functional Component Edit
       </Text>
     </View>
   );
