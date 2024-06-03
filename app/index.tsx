@@ -20,35 +20,19 @@ const Page = () => {
           style={styles.video}
         />
       )}
-      <View style={{ marginTop: 80, padding: 20 }}>
+      <View style={styles.textContainer}>
         <Text style={styles.header}>Ready to change the way you money?</Text>
       </View>
 
       <View style={styles.buttons}>
-        <Link
-          href={"/login"}
-          style={[
-            defaultStyles.pillButton,
-            { flex: 1, backgroundColor: Colors.dark },
-          ]}
-          asChild
-        >
+        <Link href={"/login"} style={styles.loginButton} asChild>
           <TouchableOpacity>
-            <Text style={{ color: "white", fontSize: 22, fontWeight: "500" }}>
-              Log in
-            </Text>
+            <Text style={styles.loginButtonText}>Log in</Text>
           </TouchableOpacity>
         </Link>
-        <Link
-          href={"/signup"}
-          style={[
-            defaultStyles.pillButton,
-            { flex: 1, backgroundColor: "#fff" },
-          ]}
-          asChild
-        >
+        <Link href={"/signup"} style={styles.signupButton} asChild>
           <TouchableOpacity>
-            <Text style={{ fontSize: 22, fontWeight: "500" }}>Sign up</Text>
+            <Text style={styles.signupButtonText}>Sign up</Text>
           </TouchableOpacity>
         </Link>
       </View>
@@ -79,5 +63,29 @@ const styles = StyleSheet.create({
     marginBottom: 60,
     paddingHorizontal: 20,
   },
+  textContainer: {
+    marginTop: 80,
+    padding: 20,
+  },
+  loginButton: {
+    ...defaultStyles.pillButton,
+    flex: 1,
+    backgroundColor: Colors.dark,
+  },
+  loginButtonText: {
+    color: "white",
+    fontSize: 22,
+    fontWeight: "500",
+  },
+  signupButton: {
+    ...defaultStyles.pillButton,
+    flex: 1,
+    backgroundColor: "#fff",
+  },
+  signupButtonText: {
+    fontSize: 22,
+    fontWeight: "500",
+  },
 });
+
 export default Page;
