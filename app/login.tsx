@@ -224,4 +224,5 @@ const styles = StyleSheet.create({
     backgroundColor: Colors.primaryMuted,
   },
 });
+
 export default Page;
