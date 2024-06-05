@@ -1,10 +1,12 @@
 import { Ionicons } from "@expo/vector-icons";
 import FontAwesome from "@expo/vector-icons/FontAwesome";
 import { useFonts } from "expo-font";
-import { Stack, router } from "expo-router";
+import { Stack, useRouter } from "expo-router";
 import * as SplashScreen from "expo-splash-screen";
+import { StatusBar } from "expo-status-bar";
 import { useEffect } from "react";
 import { TouchableOpacity } from "react-native";
+import { GestureHandlerRootView } from "react-native-gesture-handler";
 import "react-native-reanimated";
 import { Colors } from "react-native/Libraries/NewAppScreen";
 
@@ -16,7 +18,9 @@ export {
 // Prevent the splash screen from auto-hiding before asset loading is complete.
 SplashScreen.preventAutoHideAsync();
 
-export default function RootLayout() {
+const InitialLayout = () => {
+  const router = useRouter();
+
   const [loaded, error] = useFonts({
     SpaceMono: require("../assets/fonts/SpaceMono-Regular.ttf"),
     ...FontAwesome.font,
@@ -36,11 +40,6 @@ export default function RootLayout() {
   if (!loaded) {
     return null;
   }
-
-  return <RootLayoutNav />;
-}
-
-function RootLayoutNav() {
   return (
     <Stack>
       <Stack.Screen
@@ -66,4 +65,17 @@ function RootLayoutNav() {
       />
     </Stack>
   );
+};
+
+const RootLayoutNav = () => {
+  return (
+    <GestureHandlerRootView style={{ flex: 1 }}>
+      <StatusBar style="light" />
+      <InitialLayout />
+    </GestureHandlerRootView>
+  );
+};
+
+export default function RootLayout() {
+  return <RootLayoutNav />;
 }
